@@ -1,5 +1,8 @@
 # providers.tf
 
+# ##############################
+# Providers
+# ##############################
 terraform {
   required_version = ">= 1.6.0"
 
@@ -17,6 +20,9 @@ terraform {
   backend "s3" {}
 }
 
+# ##############################
+# AWS
+# ##############################
 provider "aws" {
   region = var.aws_region
 
@@ -24,3 +30,5 @@ provider "aws" {
     tags = local.default_tags
   }
 }
+
+data "aws_caller_identity" "current" {}

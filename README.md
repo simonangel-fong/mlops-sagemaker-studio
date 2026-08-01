@@ -29,3 +29,12 @@ A side project that explores key features of sagemaker studio.
 ## Feature: Pipeline
 
 create pipeline with Sagameker Python SDK
+
+---
+
+## Documentation
+
+- [IaC with Terraform](./docs/01-infra.md)
+- [Jupyter Notebook](./docs/02-notebook.md)
+- [MLflow](./docs/03-mlflow.md)
+- [Pipeline](./docs/04-pipeline.md)
