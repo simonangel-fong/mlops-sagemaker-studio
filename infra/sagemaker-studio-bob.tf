@@ -1,4 +1,4 @@
-# bob.tf
+# sagemaker-studio-bob.tf
 
 # ##############################
 # IAM Role: Bob
