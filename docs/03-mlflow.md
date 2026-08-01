@@ -4,8 +4,7 @@
 
 - [Amazon SageMaker Studio Demo - MLflow](#amazon-sagemaker-studio-demo---mlflow)
   - [MLflow](#mlflow)
-    - [Taining](#taining)
-    - [Model](#model)
+    - [Capture](#capture)
 
 ---
 
@@ -25,19 +24,26 @@ aws s3 ls "s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/"
 
 ---
 
-### Taining
+### Capture
 
-![notebook03](./img/notebook03.png)
+- UI
 
-![notebook04](./img/notebook04.png)
+![mlflow01](./img/mlflow01.png)
+
+![mlflow02](./img/mlflow02.png)
+
+- Training with notebook
+
+![mlflow03](./img/mlflow03.png)
+
+![mlflow04](./img/mlflow04.png)
+
+- Tracking
+
+![mlflow05](./img/mlflow05.png)
+
+![mlflow06](./img/mlflow06.png)
+
+![mlflow07](./img/mlflow07.png)
 
 ---
-
-### Model
-
-```sh
-aws s3 ls "s3://mlops-sagemaker-studio-dev-data-3vi8kw/model/"
-# 2026-08-01 15:23:15          0
-# 2026-08-01 15:57:52        121 features.joblib
-# 2026-08-01 15:57:52   12546337 model.joblib
-```

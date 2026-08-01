@@ -41,7 +41,11 @@ A side project that explores key features of sagemaker studio.
 
 - Experiments Tracking
 
+![mlflow05](./docs/img/mlflow05.png)
 
+![mlflow06](./docs/img/mlflow06.png)
+
+![mlflow07](./docs/img/mlflow07.png)
 
 ---
 
