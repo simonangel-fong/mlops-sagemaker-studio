@@ -29,15 +29,15 @@
 ## Upload to S3
 
 ```sh
-terraform -chdir=infra/domain output -raw data_bucket
+terraform -chdir=infra output -raw data_bucket
+# mlops-sagemaker-studio-dev-data-3vi8kw
 
+aws s3 cp data/ "s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/" --recursive --exclude "*" --include "*.csv"
+# upload: data\day.csv to s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/day.csv
+# upload: data\hour.csv to s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/hour.csv
 
-aws s3 cp data/ "s3://$BUCKET/raw/" --recursive --exclude "*" --include "*.csv"
-# upload: data\day.csv to s3://sagemaker-domain-dev-data-pqkx2l/raw/day.csv
-# upload: data\hour.csv to s3://sagemaker-domain-dev-data-pqkx2l/raw/hour.csv
-
-aws s3 ls "s3://sagemaker-domain-dev-data-pqkx2l/raw/"
-# 2026-07-31 06:31:51          0
-# 2026-07-31 06:33:23      57569 day.csv
-# 2026-07-31 06:33:23    1156736 hour.csv
+aws s3 ls "s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/"
+# 2026-08-01 15:23:15          0 
+# 2026-08-01 15:31:14      57569 day.csv
+# 2026-08-01 15:31:14    1156736 hour.csv
 ```

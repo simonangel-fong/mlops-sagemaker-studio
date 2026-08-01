@@ -26,3 +26,11 @@ resource "aws_iam_role_policy_attachment" "alice_sagemaker_full" {
   role       = aws_iam_role.alice.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonSageMakerFullAccess"
 }
+
+# full bucket
+resource "aws_iam_role_policy_attachment" "alice_bucket_full" {
+  role       = aws_iam_role.alice.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonS3FullAccess"
+}
+
+
