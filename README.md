@@ -18,8 +18,7 @@ A side project that explores key features of sagemaker studio.
   - A managed Jupyter notebooks instance within Sagamaker Studio.
 
 - JupyterLab UI
-
-![notebook01](./docs/img/notebook01.png)
+  ![notebook01](./docs/img/notebook01.png)
 
 - Notebook UI
   ![notebook02](./docs/img/notebook02.png)
@@ -35,6 +34,14 @@ A side project that explores key features of sagemaker studio.
 
 - `MLflow feature`
   - A fully managed **`MLflow` tracking servers** to track experiments, log metrics, and handle model governance directly from the workspace.
+
+- MLflow UI
+  ![mlflow01](./docs/img/mlflow01.png)
+  ![mlflow02](./docs/img/mlflow02.png)
+
+- Experiments Tracking
+
+
 
 ---
 

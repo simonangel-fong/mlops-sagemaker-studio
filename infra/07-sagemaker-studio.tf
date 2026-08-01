@@ -48,3 +48,15 @@ resource "aws_sagemaker_studio_lifecycle_config" "clone_repo" {
     })
   )
 }
+
+# ##############################
+# User profile: admin_alice
+# ##############################
+resource "aws_sagemaker_user_profile" "admin_alice" {
+  user_profile_name = "admin-alice"
+  domain_id         = aws_sagemaker_domain.this.id
+
+  user_settings {
+    execution_role = aws_iam_role.alice.arn
+  }
+}

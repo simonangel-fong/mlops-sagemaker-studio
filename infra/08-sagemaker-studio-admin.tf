@@ -1,18 +1,6 @@
 # sagemaker-studio-admin.tf
 
 # ##############################
-# User profile: admin_alice
-# ##############################
-resource "aws_sagemaker_user_profile" "admin_alice" {
-  user_profile_name = "admin-alice"
-  domain_id         = aws_sagemaker_domain.this.id
-
-  user_settings {
-    execution_role = aws_iam_role.alice.arn
-  }
-}
-
-# ##############################
 # Space: jupyterlab
 # ##############################
 resource "aws_sagemaker_space" "admin_alice" {
