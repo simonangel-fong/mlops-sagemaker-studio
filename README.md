@@ -1,6 +1,13 @@
-# mlops-sagemaker-studio
+# Amazon SageMaker Studio Demo
 
 A side project that explores key features of sagemaker studio.
+
+- [Amazon SageMaker Studio Demo](#amazon-sagemaker-studio-demo)
+  - [Sagamaker Studio](#sagamaker-studio)
+  - [Feature: JupyterLab](#feature-jupyterlab)
+  - [Feature: MLFlow](#feature-mlflow)
+  - [Feature: Pipeline](#feature-pipeline)
+  - [Documentation](#documentation)
 
 ---
 
@@ -9,6 +16,8 @@ A side project that explores key features of sagemaker studio.
 - `Amazon SageMaker Studio`
   - a web-based, unified `integrated development environment (IDE)` designed for complete, end-to-end machine learning and data workflows.
   - provides access to tools like `JupyterLab`, `Code Editor (VS Code Open Source)`, and `RStudio` to build, train, tune, and deploy AI models.
+
+![studio](./docs/img/studio01.png)
 
 ---
 
@@ -41,17 +50,22 @@ A side project that explores key features of sagemaker studio.
 
 - Experiments Tracking
 
-![mlflow05](./docs/img/mlflow05.png)
+  ![mlflow05](./docs/img/mlflow05.png)
 
-![mlflow06](./docs/img/mlflow06.png)
+  ![mlflow06](./docs/img/mlflow06.png)
 
-![mlflow07](./docs/img/mlflow07.png)
+  ![mlflow07](./docs/img/mlflow07.png)
 
 ---
 
 ## Feature: Pipeline
 
-create pipeline with Sagameker Python SDK
+- `Pipeline feature`
+  - create pipeline with Sagameker Python SDK
+
+- Pipeline UI
+  ![pipeline01](./docs/img/pipeline01.png)
+  ![pipeline02](./docs/img/pipeline02.png)
 
 ---
 

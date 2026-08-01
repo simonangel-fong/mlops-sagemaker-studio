@@ -17,24 +17,17 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 
 TARGET = "cnt"
 
-# casual + registered sum to cnt in every row, so they leak the target.
-# instant is a row index; dteday is superseded by the calendar columns.
 DROP = ["instant", "dteday", "casual", "registered", TARGET]
 
 
 def parse_args():
     p = argparse.ArgumentParser()
 
-    # Hyperparameters arrive as command line flags.
     p.add_argument("--n-estimators", type=int, default=100)
     p.add_argument("--max-depth", type=int, default=None)
-    # Fully grown trees memorize: 1M nodes, 70 MB. Capping the leaf size costs
-    # ~0.7% r2 and cuts the artifact to 12 MB, which matters on a serverless
-    # endpoint that reloads the model on every cold start.
     p.add_argument("--min-samples-leaf", type=int, default=5)
     p.add_argument("--random-state", type=int, default=42)
 
-    # Paths come from the environment SageMaker sets up.
     p.add_argument("--train", default=os.environ.get("SM_CHANNEL_TRAIN", "/opt/ml/input/data/train"))
     p.add_argument("--model-dir", default=os.environ.get("SM_MODEL_DIR", "/opt/ml/model"))
 
@@ -44,9 +37,8 @@ def parse_args():
 def load(channel_dir):
     """Read the training channel, whichever format it arrived in.
 
-    submit_job.py points this at raw/ and gets CSV. The phase 7 pipeline
-    feeds it the preprocess step's parquet output. Both callers stay
-    working rather than one format being hardcoded.
+    A direct job points this at raw/ and gets CSV; the pipeline feeds it
+    the preprocess step's parquet. Both callers stay working.
     """
     root = Path(channel_dir)
 
@@ -66,8 +58,6 @@ def main():
 
     features = [c for c in df.columns if c not in DROP]
 
-    # Split by time: train on 2011, test on 2012. A random split would let the
-    # model see hours adjacent to the ones it is scored on.
     train, test = df[df.yr == 0], df[df.yr == 1]
     print(f"train={len(train)} test={len(test)} features={len(features)}", flush=True)
 
@@ -83,8 +73,6 @@ def main():
     pred = model.predict(test[features])
     rmse = np.sqrt(mean_squared_error(test[TARGET], pred))
 
-    # Printed in this format so the metrics can be scraped by a
-    # metric_definitions regex if this job is ever used for tuning.
     print(f"rmse={rmse:.4f}", flush=True)
     print(f"mae={mean_absolute_error(test[TARGET], pred):.4f}", flush=True)
     print(f"r2={r2_score(test[TARGET], pred):.4f}", flush=True)

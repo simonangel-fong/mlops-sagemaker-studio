@@ -1,9 +1,7 @@
 """Evaluate step: score the trained artifact and emit a property file.
 
-The pipeline's condition step reads rmse out of the JSON written here, so
-the shape matters -- ConditionLessThanOrEqualTo resolves a JSONPath into
-this document. Metric names match phase 5's eval.json so a pipeline run
-and a notebook run stay comparable.
+The condition step resolves a JSONPath into the JSON written here, so the
+shape is load-bearing.
 """
 
 import argparse
@@ -28,13 +26,7 @@ def parse_args():
 
 
 def load_model(model_dir):
-    """The training step hands over model.tar.gz, not a loose artifact.
-
-    Returns the model and the feature order it was fit on. train.py saves
-    that list alongside the model because column order is part of the
-    contract -- a RandomForest takes positional input, so reordering the
-    columns silently scores garbage rather than raising.
-    """
+    """Unpack model.tar.gz; return the model and its feature order."""
     root = Path(model_dir)
 
     tars = sorted(root.glob("*.tar.gz"))
@@ -67,15 +59,9 @@ def main():
     model, features = load_model(args.model_dir)
     df = load_frame(args.test_dir)
 
-    # Rebuild the frame in the order the model was fit on rather than the
-    # order the parquet happens to be in. Deriving it from df.columns
-    # here scored 2250 against a 227 baseline -- wrong values in every
-    # column, no error raised.
     missing = [c for c in features if c not in df.columns]
     assert not missing, f"test frame is missing {missing}"
 
-    # Same time split as phases 4-6: fit on 2011, score on 2012. The
-    # model never saw yr == 1.
     test = df[df.yr == 1]
 
     y_true = test[TARGET]
@@ -86,7 +72,6 @@ def main():
     r2 = float(r2_score(y_true, y_pred))
 
     # Predicting the training mean is the floor any real model clears.
-    # Carried through so the gate threshold has context in the report.
     baseline = float(np.sqrt(mean_squared_error(y_true, np.full(len(y_true), df[df.yr == 0][TARGET].mean()))))
 
     report = {

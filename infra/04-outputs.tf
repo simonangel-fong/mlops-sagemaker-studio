@@ -11,6 +11,11 @@ output "data_bucket" {
 # ##############################
 # Studio
 # ##############################
+
+output "admin_alice_role_arn" {
+  value = aws_iam_role.alice.arn
+}
+
 output "studio_domain_id" {
   value = aws_sagemaker_domain.this.id
 }
@@ -40,10 +45,10 @@ output "mlflow_ui_command" {
   value       = "aws sagemaker create-presigned-mlflow-app-url --arn ${aws_sagemaker_mlflow_app.this.arn} --region ${var.aws_region} --query AuthorizedUrl --output text"
 }
 
-# output "model_package_group" {
-#   description = "Model registry group the pipeline registers versions into."
-#   value       = aws_sagemaker_model_package_group.bike.model_package_group_name
-# }
+output "model_package_group" {
+  description = "Model registry group the pipeline registers versions into."
+  value       = aws_sagemaker_model_package_group.bike.model_package_group_name
+}
 
 # output "endpoint_role_arn" {
 #   description = "Execution role the endpoint runs as. Passed to the deploy step."
