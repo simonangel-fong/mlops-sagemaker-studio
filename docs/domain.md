@@ -51,33 +51,27 @@ one persona through the full lifecycle. bob comes after.
 
 ---
 
-4 train
+4 train and evaluate
 
 - tf: policy 1 -- s3 rw + training job + passrole (09-iam-data.tf)
 - tf: lcc clone script + alice's private space, ml.t3.medium (10-space.tf)
 - studio: start the jupyterlab app on that space (manual, billed)
 - repo is already cloned by the lcc -- open notebooks/studio_train.ipynb
 - set BUCKET, run all: raw/ -> featured/ -> model/
+- two runs: baseline leaf5 (deployed), deeper leaf1 -- same 2012 holdout
+- floor (predict the mean) so rmse has something to beat
+- write model/eval.json -- phase 6 replays these into mlflow
 - explore: instance switch, space stop/start, terminal, git ui
+- explore: notebook vs training job, cost of each
 - verify: rmse ~126, r2 ~0.63, model.joblib in model/
+- verify: refit gives identical metrics, assert in the notebook
 
 note: tf declares the space, not the running app. starting the app
 is manual and is the part that bills -- stop it when done, the ebs
 volume persists.
 
----
-
-5 evaluate
-
-- no tf. notebooks/studio_eval.ipynb, reads featured/
-- baseline (predict the mean) so rmse has something to beat
-- two runs: A leaf5 (phase 4 model), B leaf1 (deeper trees)
-- write model/eval.json -- phase 6 replays these into mlflow
-- explore: notebook vs training job, cost of each
-- verify: refit gives identical metrics, assert in the notebook
-
-expected: baseline rmse 227.8 / A 126.3 r2 .634 12MB
-B 125.2 r2 .641 70.7MB -- 0.9% better, 6x the artifact
+expected: floor rmse 227.8 / baseline-leaf5 126.3 r2 .634 12MB
+deeper-leaf1 125.2 r2 .641 70.7MB -- 0.9% better, 6x the artifact
 
 ---
 
@@ -110,7 +104,7 @@ interleaves two unrelated id spaces.
 - src/pipeline.py defines the dag, notebooks/studio_pipeline.ipynb runs it
 - register lands PendingManualApproval -- phase 8 deploys only Approved
 - explore: step cache on rerun, gate skip at a threshold the model misses
-- verify: run green, rmse 126.3 matches phase 5, one pending version
+- verify: run green, rmse 126.3 matches phase 4, one pending version
 
 note: the dag is python, not terraform. aws_sagemaker_pipeline exists but
 takes the whole definition as one json blob -- the blob the sdk generates,
@@ -211,7 +205,7 @@ not implemented. steps:
    test of his sagemaker-mlflow grant -- the simulator cannot check it.
 
 3. bob trains a variant
-   reuse src/pipeline.py with min_samples_leaf=1 -- phase 5's run B.
+   reuse src/pipeline.py with min_samples_leaf=1 -- phase 4's deeper-leaf1.
    125.2 rmse, 0.9% better, 6x the artifact: a real tradeoff to argue
    about, not a toy change.
 

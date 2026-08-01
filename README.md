@@ -20,7 +20,7 @@ A side project that explores key features of sagemaker studio.
 > JupyterLab
 
 ![notebook02](./docs/img/notebook02.png)
->
+> Notebook UI
 
 ---
 

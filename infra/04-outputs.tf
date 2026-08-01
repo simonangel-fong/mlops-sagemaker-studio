@@ -1,25 +1,11 @@
-# # outputs.tf
+# outputs.tf
 
-# # Name carries a random suffix, so this cannot be derived by hand.
-# output "data_bucket" {
-#   description = "S3 bucket for raw data, features and model artifacts."
-#   value       = aws_s3_bucket.data.id
-# }
+# Name carries a random suffix, so this cannot be derived by hand.
+output "data_bucket" {
+  description = "S3 bucket for raw data, features and model artifacts."
+  value       = aws_s3_bucket.data.id
+}
 
-# output "kms_key_arn" {
-#   description = "KMS key encrypting the data bucket."
-#   value       = aws_kms_key.this.arn
-# }
-
-# output "domain_id" {
-#   description = "SageMaker Studio domain."
-#   value       = aws_sagemaker_domain.this.id
-# }
-
-# output "alice_role_arn" {
-#   description = "Execution role for the alice profile."
-#   value       = aws_iam_role.alice.arn
-# }
 
 # output "studio_login_command" {
 #   description = "CLI command that returns a presigned Studio URL for alice."

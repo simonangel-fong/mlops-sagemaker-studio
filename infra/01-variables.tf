@@ -65,21 +65,21 @@ variable "public_subnet_ids" {
 }
 
 # ##############################
-# Studio Space
+# Space: Notebook
 # ##############################
-variable "space_instance_type" {
+variable "notebook_instance_type" {
   description = "Default instance type for the JupyterLab app in a space."
   type        = string
   default     = "ml.t3.medium"
 }
 
-variable "space_volume_size" {
+variable "notebook_volume_size" {
   description = "Size in GB of the space EBS volume."
   type        = number
   default     = 5
 
   validation {
-    condition     = var.space_volume_size >= 5 && var.space_volume_size <= 16384
+    condition     = var.notebook_volume_size >= 5 && var.notebook_volume_size <= 16384
     error_message = "space_volume_size must be between 5 and 16384 GB."
   }
 }
