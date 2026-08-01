@@ -1,4 +1,4 @@
-# Sagemaker Studio Demo - Jupyter Notebook
+# Amazon SageMaker Studio Demo - Jupyter Notebook
 
 [Back](../README.md)
 
@@ -37,7 +37,7 @@ aws s3 cp data/ "s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/" --recursive -
 # upload: data\hour.csv to s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/hour.csv
 
 aws s3 ls "s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/"
-# 2026-08-01 15:23:15          0 
+# 2026-08-01 15:23:15          0
 # 2026-08-01 15:31:14      57569 day.csv
 # 2026-08-01 15:31:14    1156736 hour.csv
 ```
