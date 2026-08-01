@@ -14,19 +14,27 @@ A side project that explores key features of sagemaker studio.
 
 ## Feature: JupyterLab
 
-- A managed Jupyter notebooks
+- `JupyterLab feature`
+  - A managed Jupyter notebooks instance within Sagamaker Studio.
+
+- JupyterLab UI
 
 ![notebook01](./docs/img/notebook01.png)
-> JupyterLab
 
-![notebook02](./docs/img/notebook02.png)
-> Notebook UI
+- Notebook UI
+  ![notebook02](./docs/img/notebook02.png)
+
+- Training with classic bike sharing dataset
+  ![notebook03](./docs/img/notebook03.png)
+
+  ![notebook04](./docs/img/notebook04.png)
 
 ---
 
 ## Feature: MLFlow
 
-- fully managed **`MLflow` tracking servers** to track experiments, log metrics, and handle model governance directly from your workspace.
+- `MLflow feature`
+  - A fully managed **`MLflow` tracking servers** to track experiments, log metrics, and handle model governance directly from the workspace.
 
 ---
 

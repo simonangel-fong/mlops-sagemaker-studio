@@ -41,3 +41,11 @@ aws s3 ls "s3://mlops-sagemaker-studio-dev-data-3vi8kw/raw/"
 # 2026-08-01 15:31:14      57569 day.csv
 # 2026-08-01 15:31:14    1156736 hour.csv
 ```
+
+---
+
+## Taining
+
+![notebook03](./img/notebook03.png)
+
+![notebook04](./img/notebook04.png)
