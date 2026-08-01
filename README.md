@@ -16,7 +16,11 @@ A side project that explores key features of sagemaker studio.
 
 - A managed Jupyter notebooks
 
-![jupyter01](./docs/img/Jupyter01.png)
+![notebook01](./docs/img/notebook01.png)
+> JupyterLab
+
+![notebook02](./docs/img/notebook02.png)
+>
 
 ---
 

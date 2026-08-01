@@ -19,14 +19,14 @@ resource "aws_sagemaker_domain" "this" {
   default_user_settings {
     execution_role = aws_iam_role.alice.arn
 
-    # # notebook
-    # jupyter_lab_app_settings {
-    #   default_resource_spec {
-    #     instance_type = "ml.t3.medium"
-    #   }
+    # notebook
+    jupyter_lab_app_settings {
+      default_resource_spec {
+        instance_type = "ml.t3.medium"
+      }
 
-    #   lifecycle_config_arns = [aws_sagemaker_studio_lifecycle_config.clone_repo.arn]
-    # }
+      lifecycle_config_arns = [aws_sagemaker_studio_lifecycle_config.clone_repo.arn]
+    }
   }
 
   # drop the EFS volume on destroy
