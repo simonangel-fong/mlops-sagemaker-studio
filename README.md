@@ -7,6 +7,7 @@ A side project that explores key features of sagemaker studio.
   - [Feature: JupyterLab](#feature-jupyterlab)
   - [Feature: MLFlow](#feature-mlflow)
   - [Feature: Pipeline](#feature-pipeline)
+  - [Feature: Collaboration](#feature-collaboration)
   - [Documentation](#documentation)
 
 ---
@@ -64,8 +65,23 @@ A side project that explores key features of sagemaker studio.
   - create pipeline with Sagameker Python SDK
 
 - Pipeline UI
+
   ![pipeline01](./docs/img/pipeline01.png)
+
   ![pipeline02](./docs/img/pipeline02.png)
+
+- Execution
+  ![pipeline03](./docs/img/pipeline03.png)
+
+- Registed Model
+  ![pipeline04](./docs/img/pipeline04.png)
+
+---
+
+## Feature: Collaboration
+
+- Simulate a data scientist, Bob
+
 
 ---
 

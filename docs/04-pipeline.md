@@ -11,22 +11,14 @@
 
 - UI
 
-![pipeline01](./img/pipeline01.png)
+  ![pipeline01](./img/pipeline01.png)
 
-![pipeline02](./img/pipeline02.png)
+  ![pipeline02](./img/pipeline02.png)
 
-- Training with notebook
+- Execution
+  ![pipeline03](./img/pipeline03.png)
 
-![pipeline03](./img/pipeline03.png)
-
-![pipeline04](./img/pipeline04.png)
-
-- Tracking
-
-![pipeline05](./img/pipeline05.png)
-
-![pipeline06](./img/pipeline06.png)
-
-![pipeline07](./img/pipeline07.png)
+- Registed Model
+  ![pipeline04](./img/pipeline04.png)
 
 ---
