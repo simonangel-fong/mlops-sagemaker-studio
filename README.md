@@ -96,3 +96,4 @@ A side project that explores the key features of Amazon SageMaker Studio.
 - [Jupyter Notebook](./docs/02-notebook.md)
 - [MLflow](./docs/03-mlflow.md)
 - [Pipeline](./docs/04-pipeline.md)
+- [Collaboration](./docs/05-collaboration.md)
